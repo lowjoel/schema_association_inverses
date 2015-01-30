@@ -1,10 +1,5 @@
-require "schema_association_inverses/version"
-
-
+require 'schema_association_inverses/version'
 
 module SchemaAssociationInverses
-
   # Your code goes here...
-
 end
-
