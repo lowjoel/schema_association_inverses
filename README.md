@@ -17,7 +17,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install schema_association_inverses
+    $ gem install schema_plus_association_inverses
 
 ## Usage
 
