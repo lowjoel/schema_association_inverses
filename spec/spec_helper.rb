@@ -4,8 +4,11 @@ $LOAD_PATH.unshift(File.join(__dir__, '..', 'lib'))
 require 'rspec'
 require 'active_record'
 require 'schema_plus/core'
+require 'schema_dev/rspec'
 
 Dir[__dir__ + '/support/**/*.rb'].each {|f| require f}
+
+SchemaDev::Rspec.setup
 
 RSpec.configure do |config|
   config.warnings = true
