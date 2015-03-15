@@ -7,7 +7,7 @@ module SchemaPlus::AssociationInverses
 
           def before(env)
             if !env.reflection.polymorphic? && !env.reflection.has_inverse?
-              raise ActiveRecord::Associations::InverseOfAssociationNotFoundError.new(env.reflection)
+              raise ActiveRecord::InverseOfAssociationNotFoundError.new(env.reflection)
             end
           end
 
