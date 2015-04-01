@@ -1,4 +1,4 @@
-# SchemaPlus Association Inverses [![Build Status](https://travis-ci.org/lowjoel/schema_plus_association_inverses.svg)](https://travis-ci.org/lowjoel/schema_plus_association_inverses)
+# SchemaPlus Association Inverses [![Build Status](https://travis-ci.org/lowjoel/schema_plus_association_inverses.svg)](https://travis-ci.org/lowjoel/schema_plus_association_inverses) [![Coverage Status](https://coveralls.io/repos/lowjoel/schema_plus_association_inverses/badge.svg)](https://coveralls.io/r/lowjoel/schema_plus_association_inverses)
 
 This little gem detects when an ActiveRecord association requires the programmer to explicitly set
 `inverse_of` in the declaration.
