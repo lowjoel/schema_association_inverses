@@ -1,24 +1,27 @@
 require 'spec_helper'
 
 describe 'Inverse Detection', type: :model do
+  class TestB < ActiveRecord::Base; end
+  class TestA < ActiveRecord::Base; end
+
   before(:each) do
     create_tables(
       'test_as', {}, {},
       'test_bs', {}, { a_id: {} }
     )
-
-    class TestB < ActiveRecord::Base
-      belongs_to :a
-    end
-
-    class TestA < ActiveRecord::Base
-      has_many :b, class_name: TestB.name
-    end
   end
 
-  context 'automatic inverse detection' do
-    it 'detects inverses' do
-      expect { TestA.new.b.build() }.to raise_error(ActiveRecord::InverseOfAssociationNotFoundError)
+  context 'inverse detection' do
+    it 'detects inverses being set' do
+      expect { TestB.belongs_to :a, inverse_of: :b }.to_not raise_error
+    end
+
+    it 'raises errors when inverses are not detected' do
+      expect { TestA.has_many :b, class_name: TestB.name }.to raise_error(ActiveRecord::InverseOfAssociationNotFoundError)
+    end
+
+    it 'ignores polymorphic associations' do
+      expect { TestA.belongs_to :c, polymorphic: true }.to_not raise_error
     end
   end
 
