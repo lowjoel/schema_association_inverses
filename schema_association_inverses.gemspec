@@ -28,4 +28,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', '~> 3'
   spec.add_development_dependency 'rspec-core', '~> 3'
   spec.add_development_dependency 'schema_dev', '~> 3.3'
+  spec.add_development_dependency 'simplecov'
+  spec.add_development_dependency 'simplecov-gem-profile'
 end
