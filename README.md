@@ -21,8 +21,11 @@ Or install it yourself as:
 
 ## Usage
 
-When a model requiring manual declaration of the inverse is detected, a little window appears at the
-bottom of the page. This is inspired by [Bullet](https://github.com/flyerhzm/bullet).
+When a model requiring manual declaration of the inverse is detected, an 
+`ActiveRecord::InverseOfAssociationNotFoundError` is raised.
+
+To specify that an association does not have an inverse, explicitly set `inverse_of` on the 
+relation to `false` or `nil`.
 
 ## Contributing
 

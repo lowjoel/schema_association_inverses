@@ -32,6 +32,22 @@ describe 'Inverse Detection', type: :model do
       end
     end
 
+    context 'when an inverse is false' do
+      subject { TestA.has_many :b, class_name: TestB.name, inverse_of: false }
+
+      it 'does not raise an error' do
+        subject
+      end
+    end
+
+    context 'when an inverse is nil' do
+      subject { TestA.has_many :b, class_name: TestB.name, inverse_of: nil }
+
+      it 'does not raise an error' do
+        subject
+      end
+    end
+
     it 'ignores polymorphic associations' do
       expect { TestA.belongs_to :c, polymorphic: true }.to_not raise_error
     end
