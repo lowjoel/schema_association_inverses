@@ -16,8 +16,20 @@ describe 'Inverse Detection', type: :model do
       expect { TestB.belongs_to :a, inverse_of: :b }.to_not raise_error
     end
 
-    it 'raises errors when inverses are not detected' do
-      expect { TestA.has_many :b, class_name: TestB.name }.to raise_error(ActiveRecord::InverseOfAssociationNotFoundError)
+    context 'when inverses are not detected' do
+      subject { TestA.has_many :b, class_name: TestB.name }
+
+      it 'raises an error' do
+        expect { subject }.to raise_error(ActiveRecord::InverseOfAssociationNotFoundError)
+      end
+
+      it 'specifies the model with the problematic association' do
+        begin
+          subject
+        rescue ActiveRecord::InverseOfAssociationNotFoundError => e
+        end
+        expect(e.message).to match(/in TestA/)
+      end
     end
 
     it 'ignores polymorphic associations' do
