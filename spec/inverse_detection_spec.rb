@@ -7,7 +7,8 @@ describe 'Inverse Detection', type: :model do
   before(:each) do
     create_tables(
       'test_as', {}, {},
-      'test_bs', {}, { a_id: {} }
+      'test_bs', {}, { a_id: {} },
+      'test_as_bs', {}, { a_id: {}, b_id: {} }
     )
   end
 
@@ -50,6 +51,11 @@ describe 'Inverse Detection', type: :model do
 
     it 'ignores polymorphic associations' do
       expect { TestA.belongs_to :c, polymorphic: true }.to_not raise_error
+    end
+
+    it 'ignores has-and-belongs-to-many associations' do
+      expect { TestA.has_and_belongs_to_many :test_b }.to_not raise_error
+      expect { TestB.has_and_belongs_to_many :test_a }.to_not raise_error
     end
   end
 
